@@ -91,7 +91,7 @@ namespace TDD_D2
         {
             //arrange
             var target = new ShoppingCart();
-            var expected = 320;
+            var expected = 375;
             var books = new List<Book>
             {
                 new Book { Name= "第一集" , Price = 100 },
