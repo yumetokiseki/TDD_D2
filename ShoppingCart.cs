@@ -31,6 +31,11 @@ namespace TDD_D2
                 result = CalculateDiscount(discountby4, result);
             }
 
+            else if (books.Count == 5)
+            {
+                result = CalculateDiscount(discountby5, result);
+            }
+
             return result;
         }
 
