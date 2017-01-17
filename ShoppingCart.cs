@@ -22,6 +22,10 @@ namespace TDD_D2
             {
                 result = result * (100 - discountby2) / 100;
             }
+            else if (books.Count == 3)
+            {
+                result = result * (100 - discountby3) / 100;
+            }
 
             return result;
         }
