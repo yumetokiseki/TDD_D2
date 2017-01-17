@@ -20,13 +20,23 @@ namespace TDD_D2
 
             if (books.Count == 2)
             {
-                result = result * (100 - discountby2) / 100;
+                result = CalculateDiscount(discountby2, result);
             }
             else if (books.Count == 3)
             {
-                result = result * (100 - discountby3) / 100;
+                result = CalculateDiscount(discountby3, result);
+            }
+            else if (books.Count == 4)
+            {
+                result = CalculateDiscount(discountby4, result);
             }
 
+            return result;
+        }
+
+        private static double CalculateDiscount(int discount, double result)
+        {
+            result = result * (100 - discount) / 100;
             return result;
         }
     }
