@@ -8,7 +8,7 @@ namespace TDD_D2
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Scenario1()
         {
             //arrange
             var target = new ShoppingCart();
@@ -19,11 +19,30 @@ namespace TDD_D2
             };
 
             //act
-            var actual = target.calculate(books, 5,10,20,25);
+            var actual = target.calculate(books, 5, 10, 20, 25);
 
             //assert
             Assert.AreEqual(expected, actual);
 
+        }
+
+        [TestMethod]
+        public void Scenario2()
+        {
+            //arrange
+            var target = new ShoppingCart();
+            var expected = 190;
+            var books = new List<Book>
+            {
+                new Book { Name= "第一集" , Price = 100 },
+                new Book { Name= "第二集" , Price = 100 }
+            };
+
+            //act
+            var actual = target.calculate(books, 5, 10, 20, 25);
+
+            //assert
+            Assert.AreEqual(expected, actual);
         }
     }
 
