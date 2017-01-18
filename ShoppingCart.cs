@@ -16,6 +16,50 @@ namespace TDD_D2
             var booklist = new List<string>();
             Dictionary<Book, int> dictionary = new Dictionary<Book, int>();
 
+            dictionary = InsertDictionary(books, booklist, dictionary);
+
+            if (books.Count == 1)
+            {
+                result = CalculateDiscount(books, 0);
+            }
+
+            else if (books.Count == 2)
+            {
+                result = CalculateDiscount(books, discountby2);
+            }
+            else if (books.Count == 3)
+            {
+                result = CalculateDiscount(books, discountby3);
+            }
+            else if (books.Count == 4)
+            {
+                if (dictionary.Count == books.Count)
+                {
+                    result = CalculateDiscount(books, discountby4);
+                }
+                else
+                {
+                    result = CalculateDiscountOther(dictionary, discountby2, discountby3, discountby4, discountby5);
+                }
+            }
+
+            else if (books.Count == 5)
+            {
+                if (dictionary.Count == books.Count)
+                {
+                    result = CalculateDiscount(books, discountby5);
+                }
+                else
+                {
+                    result = CalculateDiscountOther(dictionary, discountby2, discountby3, discountby4, discountby5);
+                }
+            }
+
+            return result;
+        }
+
+        private static Dictionary<Book, int> InsertDictionary(List<Book> books, List<string> booklist, Dictionary<Book, int> dictionary)
+        {
             foreach (Book book in books)
             {
                 if (dictionary.Count == 0)
@@ -33,7 +77,7 @@ namespace TDD_D2
                         {
                             dictionarytemp[dictionaryitem] = dictionarytemp[dictionaryitem] + 1;
                         }
-                        else if ( value == 0 && (booklist.Find(x => x.Contains(book.Name)) == null))
+                        else if (value == 0 && (booklist.Find(x => x.Contains(book.Name)) == null))
                         {
                             dictionarytemp.Add(book, 1);
                             booklist.Add(book.Name);
@@ -45,44 +89,7 @@ namespace TDD_D2
                 }
             }
 
-            if (books.Count == 1)
-            {
-                result = CalculateDiscount(books, 0);
-            }
-
-            else if (books.Count == 2)
-            {
-                result = CalculateDiscount(books,discountby2);
-            }
-            else if (books.Count == 3)
-            {
-                result = CalculateDiscount(books,discountby3);
-            }
-            else if (books.Count == 4)
-            {
-                if (dictionary.Count == books.Count)
-                {
-                    result = CalculateDiscount(books, discountby4);
-                }
-                else
-                {
-                    result = CalculateDiscountOther(dictionary, discountby2, discountby3, discountby4, discountby5);
-                }            
-            }
-
-            else if (books.Count == 5)
-            {
-                if (dictionary.Count == books.Count)
-                {
-                    result = CalculateDiscount(books, discountby5);
-                }
-                else
-                {
-                    result = CalculateDiscountOther(dictionary, discountby2, discountby3, discountby4, discountby5);
-                }
-            }
-
-            return result;
+            return dictionary;
         }
 
         private double CalculateDiscountOther( Dictionary<Book, int> dictionary, int discountby2, int discountby3, int discountby4, int discountby5)
