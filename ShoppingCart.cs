@@ -105,95 +105,46 @@ namespace TDD_D2
                 }
                 else if (dictionary.Count == 2)
                 {
-                    var priceby2book = 0;
-                    var dictionarytemp = new Dictionary<Book, int>(dictionary);
-                    foreach (var item in dictionarytemp)
-                    {
-                        priceby2book = priceby2book + item.Key.Price;
-
-                        if (item.Value == 1)
-                        {
-                            dictionary.Remove(item.Key);
-                        }
-                        else
-                        {
-                            dictionary[item.Key] = item.Value - 1;
-                        }
-                    }
-
-                    priceby2book = priceby2book * (100 - discountby2) / 100 ;
-
-                    result = result + priceby2book;
+                    result = CalculateGroupDiscount(dictionary, discountby2, result);
                 }
                 else if (dictionary.Count == 3)
                 {
-                    var priceby3book = 0;
-                    var dictionarytemp = new Dictionary<Book, int>(dictionary);
-                    foreach (var item in dictionarytemp)
-                    {
-                        priceby3book = priceby3book + item.Key.Price;
-
-                        if (item.Value == 1)
-                        {
-                            dictionary.Remove(item.Key);
-                        }
-                        else
-                        {
-                            dictionary[item.Key] = item.Value - 1;
-                        }
-                    }
-
-                    priceby3book = priceby3book * (100 - discountby3) / 100;
-
-                    result = result + priceby3book;
+                    result = CalculateGroupDiscount(dictionary, discountby3, result);
                 }
                 else if (dictionary.Count == 4)
                 {
-                    var priceby4book = 0;
-                    var dictionarytemp = new Dictionary<Book, int>(dictionary);
-                    foreach (var item in dictionarytemp)
-                    {
-                        priceby4book = priceby4book + item.Key.Price;
-
-                        if (item.Value == 1)
-                        {
-                            dictionary.Remove(item.Key);
-                        }
-                        else
-                        {
-                            dictionary[item.Key] = item.Value - 1;
-                        }
-
-                    }
-
-                    priceby4book = priceby4book * (100 - discountby4) / 100 ;
-
-                    result = result + priceby4book;
+                    result = CalculateGroupDiscount(dictionary, discountby4, result);
                 }
                 else if (dictionary.Count == 5)
                 {
-                    var priceby5book = 0;
-                    var dictionarytemp = new Dictionary<Book, int>(dictionary);
-                    foreach (var item in dictionarytemp)
-                    {
-                        priceby5book = priceby5book + item.Key.Price;
-
-                        if (item.Value == 1)
-                        {
-                            dictionary.Remove(item.Key);
-                        }
-                        else
-                        {
-                            dictionary[item.Key] = item.Value - 1;
-                        }
-                    }
-
-                    priceby5book = priceby5book * (100 - discountby5) / 100 ;
-
-                    result = result + priceby5book;
+                    result = CalculateGroupDiscount(dictionary, discountby5, result);
                 }
             }
 
+            return result;
+        }
+
+        private static double CalculateGroupDiscount(Dictionary<Book, int> dictionary, int discountby2, double result)
+        {
+            var priceby2book = 0;
+            var dictionarytemp = new Dictionary<Book, int>(dictionary);
+            foreach (var item in dictionarytemp)
+            {
+                priceby2book = priceby2book + item.Key.Price;
+
+                if (item.Value == 1)
+                {
+                    dictionary.Remove(item.Key);
+                }
+                else
+                {
+                    dictionary[item.Key] = item.Value - 1;
+                }
+            }
+
+            priceby2book = priceby2book * (100 - discountby2) / 100;
+
+            result = result + priceby2book;
             return result;
         }
 
